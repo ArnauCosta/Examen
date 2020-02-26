@@ -36,7 +36,7 @@ public class Funcions {
         System.out.print("El post te contingut per adults S/N: ");
         if (sc.nextLine().equalsIgnoreCase("S")) {
             nouPost.setContingutMajor(true);
-        } else if (sc.nextLine().equalsIgnoreCase("N")) {
+        } else{
             nouPost.setContingutMajor(false);
         }
         nouPost.setDataPost(LocalDateTime.now());
@@ -44,10 +44,23 @@ public class Funcions {
         posts.add(nouPost);
     }
 
-    public static void mostraPostPerEliminar(ArrayList<Post> posts) {
-        for (Post post : posts) {
-            
+    public static Usuari retornaUsuariPelNom(ArrayList<Usuari> usuaris, String nom) {
+
+        for (Usuari usuari : usuaris) {
+            if(usuari.getNomUsuari().equals(nom)){
+                return usuari;
+            }
         }
+        return null;
+
+    }
+
+    public static int[] arrayDeStringAInt(String[] dia) {
+        int[] arrayInt = new int[dia.length];
+        for (int i = 0; i < arrayInt.length; i++) {
+            arrayInt[i] = Integer.parseInt(dia[i]);
+        }
+        return arrayInt;
     }
 
     

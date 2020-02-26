@@ -7,13 +7,16 @@ public class Lector extends Usuari{
 
     public Lector(String nomUsuari) {
         super(nomUsuari);
-        // TODO Auto-generated constructor stub
     }
 
     @Override
     public void demanaDades() {
-        // TODO Auto-generated method stub
-
+        System.out.println("------------------------------------");
+        System.out.println("-1 - Seguir a un editor nou        -");
+        System.out.println("-2 - Veure els editors que segueixo-");
+        System.out.println("-3 - Mirar el teu mur              -");
+        System.out.println("-0 - Log out                       -");
+        System.out.println("------------------------------------");
     }
 
     public boolean isMajor() {

@@ -2,6 +2,7 @@ package cirv;
 
 import java.security.MessageDigest;
 import java.time.LocalDateTime;
+import java.time.Period;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -17,6 +18,9 @@ public class Principal {
         Scanner sc = new Scanner(System.in);
         ArrayList<Usuari> usuaris = new ArrayList<Usuari>();
         ArrayList<Post> posts = new ArrayList<Post>();
+
+
+        //funciona tot el usuari administrador, i la creacio de usuaris, pero els usuaris lectors i editors no poden fer res.
 
         System.out.print("Introdueix el nom que tindra el usuari amb rol d'administrador: ");
         Administrador admin = new Administrador(sc.nextLine());
@@ -61,23 +65,48 @@ public class Principal {
                             case "2":
 
                                 for (Post post : posts) {
-                                    post.toString();
+                                    post.mostraPost();
                                 }
 
                                 break;
                             case "3":
 
-                            
+                                for (Post post : posts) {
+                                    System.out.println((posts.indexOf(post) + 1) + " - " + post.mostraPostCurt());
+                                }
+                                System.out.print("Quin post vols borrar: ");
+                                posts.remove(sc.nextInt() - 1);
+                                sc.nextLine();
 
                                 break;
                             case "4":
 
+                                for (Usuari usuari : usuaris) {
+                                    if (usuari.getClass().toString().equals("Lector")) {
+                                        System.out.println(usuari);
+                                    }
+                                }
+                                System.out.print("Escriu el username del usuari: ");
+
+                                usuaris.get(usuaris.indexOf(Funcions.retornaUsuariPelNom(usuaris, sc.nextLine())))
+                                        .setRol("edi");
+
                                 break;
                             case "5":
 
+                                for (Usuari usuari : usuaris) {
+                                    if (usuari.getClass().toString().equals("Editor")) {
+                                        System.out.println(usuari);
+                                    }
+                                }
+
                                 break;
                             case "6":
-
+                                for (Usuari usuari : usuaris) {
+                                    if (usuari.getClass().toString().equals("Lector")) {
+                                        System.out.println(usuari);
+                                    }
+                                }
                                 break;
 
                             case "0":
@@ -93,9 +122,30 @@ public class Principal {
 
                         case "lec":
 
+                            switch (sc.nextLine()) {
+                            case "1":
+
+                                break;
+                            case "2":
+
+                                break;
+                            case "3":
+
+                                break;
+                            case "0":
+                                bucleUsuari = false;
+
+                                break;
+
+                            default:
+                                System.out.println("El valor entrat no es correcte");
+
+                                break;
+                            }
+
                             break;
 
-                        case "esc":
+                        case "edi":
 
                             break;
 
@@ -111,6 +161,18 @@ public class Principal {
                 break;
 
             case "2":
+
+                System.out.print("Introdueix el nom que tindra el lector: ");
+                Lector lectorNou = new Lector(sc.nextLine());
+                System.out.print("Introdueix la contrasenya del lector: ");
+                lectorNou.setPassword(sc.nextLine());
+                System.out.print("Introdueix data de neixement del lector (12/1/2020): ");
+                String edatString[] = sc.nextLine().split("/");
+                int edatInt[] = Funcions.arrayDeStringAInt(edatString);
+                LocalDateTime edat = LocalDateTime.of(edatInt[2], edatInt[1], edatInt[0], 0, 0, 0);
+                
+                lectorNou.setRol("lec");
+                usuaris.add(lectorNou);
 
                 break;
 

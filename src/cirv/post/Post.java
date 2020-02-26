@@ -55,25 +55,18 @@ public class Post {
         this.editor = editor;
     }
 
-    @Override
-    public String toString() {
-        return "###############################"+
-                "Data: "+this.dataPost+"\r"+
-                "Autor: "+this.editor.getNomUsuari()+"\r"+
-                "+ 18? "+this.contingutMajor+"\r"+
-                "Titol: "+this.titol + "\r" +
-                "Contingut: "+this.contingut+
-                "###############################";
+    public void mostraPost() {
+        System.out.println("###############################");
+        System.out.println("Data: "+this.dataPost);
+        System.out.println("Autor: "+this.editor.getNomUsuari());   
+        System.out.println("+ 18? "+this.contingutMajor);
+        System.out.println("Titol: "+this.titol);
+        System.out.println("Contingut: "+this.contingut);
+        System.out.println("###############################");  
     }
 
-    public String toStringCurt() {
-        return "###############################"+
-                "Data: "+this.dataPost+"\r"+
-                "Autor: "+this.editor.getNomUsuari()+"\r"+
-                "+ 18? "+this.contingutMajor+"\r"+
-                "Titol: "+this.titol + "\r" +
-                "Contingut: "+this.contingut+
-                "###############################";
+    public String mostraPostCurt() {
+        return "Data: "+this.dataPost+" Autor: "+this.editor.getNomUsuari()+" Titol: "+this.titol;
     }
 
     
