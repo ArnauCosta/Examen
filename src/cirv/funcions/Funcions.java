@@ -19,7 +19,7 @@ public class Funcions {
         System.out.println("---------------------------------");
     }
 
-    public static Usuari buscaUsuariPerNom(ArrayList<Usuari> usuaris, String userName) {
+    public static Usuari retornaUsuariPerNom(ArrayList<Usuari> usuaris, String userName) {
         for (Usuari usuari : usuaris) {
             if (usuari.getNomUsuari().equals(userName)) {
                 return usuari;
@@ -44,17 +44,6 @@ public class Funcions {
         posts.add(nouPost);
     }
 
-    public static Usuari retornaUsuariPelNom(ArrayList<Usuari> usuaris, String nom) {
-
-        for (Usuari usuari : usuaris) {
-            if(usuari.getNomUsuari().equals(nom)){
-                return usuari;
-            }
-        }
-        return null;
-
-    }
-
     public static int[] arrayDeStringAInt(String[] dia) {
         int[] arrayInt = new int[dia.length];
         for (int i = 0; i < arrayInt.length; i++) {
@@ -62,6 +51,31 @@ public class Funcions {
         }
         return arrayInt;
     }
+    
+    public static boolean comprovaExisteixElUsuari(ArrayList<Usuari> usuaris, String userName) {
+        for (Usuari usuari : usuaris) {
+            if (usuari.getNomUsuari().equals(userName)) {
+                return true;
+            }
+        }
+        System.out.println("El usuari no existeix");
+        return false;
+    }
 
+    public static void printEditors(ArrayList<Usuari> usuaris) {
+        for (Usuari usuari : usuaris) {
+            if (usuari.getRol().equals("edi")) {
+                System.out.println(usuari.getNomUsuari());
+            }
+        }
+    }
+
+    public static void mostraPostsDeEditorsSeguits(ArrayList<Post> posts, Usuari loginUsuari) {
+        for (Post post : posts) {
+            if (loginUsuari.getUsuarisSeguits().contains(post.getEditor())) {
+                post.mostraPost();
+            }
+        }
+    }
     
 }

@@ -9,8 +9,13 @@ public class Editor extends Usuari{
 
     @Override
     public void demanaDades() {
-        // TODO Auto-generated method stub
-
+        System.out.println("------------------------------------");
+        System.out.println("-1 - Crear un post                 -");
+        System.out.println("-2 - Seguir un editor nou          -");
+        System.out.println("-3 - Veure els editors que segueixo-");
+        System.out.println("-4 - Mirar el teu mur              -");
+        System.out.println("-0 - Log out                       -");
+        System.out.println("------------------------------------");
     }
 
     

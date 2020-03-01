@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public abstract class Usuari {
 
     protected String nomUsuari, password, rol;
-    protected ArrayList<Usuari> usuarisSagueix;
+    protected ArrayList<Usuari> usuarisSeguits;
 
 
     public Usuari(String nomUsuari) {
@@ -41,13 +41,23 @@ public abstract class Usuari {
         this.rol = rol;
     }
 
-    public ArrayList<Usuari> getUsuarisSagueix() {
-        return usuarisSagueix;
+    public ArrayList<Usuari> getUsuarisSeguits() {
+        return usuarisSeguits;
     }
 
-    public void setUsuarisSagueix(ArrayList<Usuari> usuarisSagueix) {
-        this.usuarisSagueix = usuarisSagueix;
+    public void setUsuarisSeguits(ArrayList<Usuari> usuarisSeguits) {
+        this.usuarisSeguits = usuarisSeguits;
     }
-    
+
+    public void seguirUsuari(Usuari usuariPerSeguir) {
+        this.usuarisSeguits.add(usuariPerSeguir);
+    }
+
+
+    public void mostraEditorsSeguits() {
+        for (Usuari usuari : this.usuarisSeguits) {
+            System.out.println(usuari.getNomUsuari());
+        }
+    }
 
 }
